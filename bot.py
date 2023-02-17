@@ -19,7 +19,7 @@ async def send_message(message, user_message, is_private):
 articles = responses.get_all_articles()
 
 def run_discord_bot():
-    TOKEN = creds.key  # milo's bot - get new code
+    TOKEN = creds.key  # your token here
 
     print(TOKEN)
     intents = discord.Intents.default()
@@ -29,7 +29,7 @@ def run_discord_bot():
     @client.event
     async def on_ready():
         print(f"{client.user} is now online!")
-        channel = client.get_channel(1066420502727495690)
+        channel = client.get_channel(creds.channel) #channel ID here
         for article in articles:
             await channel.send(article)
 
@@ -43,7 +43,7 @@ def run_discord_bot():
         #
         # print(f"{username} said: '{user_msg}' {current_channel}")
 
-        if user_msg[0] == '.':
+        if user_msg[0] == '!':
             await  send_message(message, user_msg, is_private=False)
 
     client.run(TOKEN)

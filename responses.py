@@ -6,8 +6,6 @@ import urllib.request
 import requests
 from bs4 import BeautifulSoup
 
-import creds
-
 
 
 #
@@ -16,10 +14,10 @@ def get_all_articles():
 
 
 def get_response(message):
-    u_msg = message.lower()
-    if u_msg == ".art1":
+    u_msg = message[1:].lower()
+    if u_msg == "art1":
         return get_latest_eng_tech_article()
-    elif u_msg == ".art2":
+    elif u_msg == "art2":
         return get_latest_nature_article()
 
 
